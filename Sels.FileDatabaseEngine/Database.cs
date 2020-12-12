@@ -153,7 +153,7 @@ namespace Sels.FileDatabaseEngine
 
         public void MigrateTo(DirectoryInfo newSource, bool overwrite = false, bool keepOldSource = false)
         {
-            newSource.EnsureExistsAndValidate(nameof(newSource));
+            newSource.CreateIfNotExistAndValidate(nameof(newSource));
 
             using (var logger = _logger.CreateTimedLogger(LogLevel.Information, () => $"Migrating Database({Identifier}) to {newSource.FullName}", x => $"Migrated Database({Identifier}) to {newSource.FullName}"))
             {
@@ -161,21 +161,21 @@ namespace Sels.FileDatabaseEngine
                 {
                     _state.ValidateState(Identifier, RunningState.Shutdown);
 
-                    logger.Log(x => $"Copying files to {newSource.FullName} ({x.TotalMilliseconds}ms)");
+                    logger.Log((x, y) => y.LogMessage(LogLevel.Information, $"Copying files to {newSource.FullName} ({x.TotalMilliseconds}ms)"));
                     // Copy source files to new source directory
                     Source.CopyContentTo(newSource, overwrite);
 
-                    logger.Log(x => $"Migrating Data Tables ({x.TotalMilliseconds}ms)");
+                    logger.Log((x, y) => y.LogMessage(LogLevel.Information, $"Migrating Data Tables ({x.TotalMilliseconds}ms)"));
                     // Migrate Tables
                     _dataTables.Execute(x => x.IsInState(RunningState.Shutdown)).Execute(x => x.SourceDirectory = GetTablePath(newSource, x.Identifier));
 
-                    logger.Log(x => $"Migrating Data Pages ({x.TotalMilliseconds}ms)");
+                    logger.Log((x, y) => y.LogMessage(LogLevel.Information, $"Migrating Data Pages ({x.TotalMilliseconds}ms)"));
                     // Migrate Pages
                     _dataPages.Execute(x => x.IsInState(RunningState.Shutdown)).Execute(x => x.SourceDirectory = GetPagePath(newSource, x.Identifier));
 
                     if (!keepOldSource)
                     {
-                        logger.Log(x => $"Database({Identifier}) deleting old source");
+                        logger.Log((x, y) => y.LogMessage(LogLevel.Information, $"Database({Identifier}) deleting old source"));
                         Source.Delete(true);
                     }
 
@@ -320,7 +320,7 @@ namespace Sels.FileDatabaseEngine
             {
                 lock (_globalThreadLock)
                 {
-                    Source.EnsureExistsAndValidate(nameof(Source));
+                    Source.CreateIfNotExistAndValidate(nameof(Source));
 
                     var infoFileName = Path.Combine(Source.FullName, DatabaseFileName);
 

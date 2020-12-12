@@ -55,7 +55,7 @@ namespace Sels.FileDatabaseEngine.Table
         #region Initialization And Validation
         public void Initialize(DirectoryInfo source)
         {
-            source.EnsureExistsAndValidate(nameof(source));
+            source.CreateIfNotExistAndValidate(nameof(source));
 
             _source = source;
 

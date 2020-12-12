@@ -76,7 +76,7 @@ namespace Sels.FileDatabaseEngine
         public static Database CreateDatabase(string identifier, DirectoryInfo databaseSourceDirectory)
         {
             identifier.ValidateVariable(nameof(identifier));
-            databaseSourceDirectory.EnsureExistsAndValidate(nameof(databaseSourceDirectory));
+            databaseSourceDirectory.CreateIfNotExistAndValidate(nameof(databaseSourceDirectory));
 
             Engine.Logger.LogMessage(LogLevel.Information, $"FileDatabaseEngine creating Database({identifier}) in {databaseSourceDirectory}");
 

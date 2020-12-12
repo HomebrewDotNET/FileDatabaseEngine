@@ -48,7 +48,6 @@ namespace Sels.FileDatabaseEngine.Table
         {
             comparator.ValidateVariable(nameof(comparator));
             dataSource.ValidateVariable(nameof(dataSource));
-            typeActivator.ValidateVariable(nameof(typeActivator));
 
             _comparator = comparator;
             _dataSource = dataSource;
@@ -415,7 +414,7 @@ namespace Sels.FileDatabaseEngine.Table
 
             lock (_globalThreadLock)
             {
-                SourceDirectory.EnsureExistsAndValidate(nameof(SourceDirectory));
+                SourceDirectory.CreateIfNotExistAndValidate(nameof(SourceDirectory));
                 _dataSource.Initialize(SourceDirectory);
 
                 var infoFileName = Path.Combine(SourceDirectory.FullName, TableFileName);

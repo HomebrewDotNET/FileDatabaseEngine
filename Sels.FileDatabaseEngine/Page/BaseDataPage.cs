@@ -31,7 +31,7 @@ namespace Sels.FileDatabaseEngine.Page
         public BaseDataPage(DirectoryInfo sourceDirectory, string identifier, ILogger logger)
         {
             identifier.ValidateVariable(nameof(identifier));
-            sourceDirectory.EnsureExistsAndValidate(nameof(sourceDirectory));
+            sourceDirectory.CreateIfNotExistAndValidate(nameof(sourceDirectory));
             logger.ValidateVariable(nameof(logger));
 
             Identifier = identifier;

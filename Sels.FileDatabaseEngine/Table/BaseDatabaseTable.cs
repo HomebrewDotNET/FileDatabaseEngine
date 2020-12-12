@@ -47,7 +47,7 @@ namespace Sels.FileDatabaseEngine.Table
 
         public BaseDatabaseTable(DirectoryInfo sourceDirectoy, string identifier, int timeout, ILogger logger)
         {
-            sourceDirectoy.EnsureExistsAndValidate(nameof(sourceDirectoy));
+            sourceDirectoy.CreateIfNotExistAndValidate(nameof(sourceDirectoy));
             identifier.ValidateVariable(nameof(identifier));
             timeout.ValidateVariable(nameof(timeout));
             logger.ValidateVariable(nameof(logger));
