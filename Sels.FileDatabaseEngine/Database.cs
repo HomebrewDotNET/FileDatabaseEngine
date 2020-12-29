@@ -416,7 +416,7 @@ namespace Sels.FileDatabaseEngine
                 if (typeof(T).TryFindProperty(DefaultIdProperty, out var idProperty))
                 {
                     var sourceValue = idProperty.GetValue(sourceObject);
-                    var targetValue = idProperty.GetValue(sourceObject);
+                    var targetValue = idProperty.GetValue(targetObject);
 
                     if (sourceValue.HasValue() && targetValue.HasValue() && sourceValue.Equals(targetValue))
                     {

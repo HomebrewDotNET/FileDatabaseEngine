@@ -353,7 +353,12 @@ namespace Sels.FileDatabaseEngine.Table
             _logger.LogMessage(LogLevel.Information, $"Clearing remnants of previous connection on DatabaseTable({Identifier})<{typeof(T)}>");
             lock (_threadLock)
             {
-                CachedItems.ResetCache();
+                // Only clear cache when we had pending changes. This way sequential reads are faster
+                if (_hasPendingChanges)
+                {
+                    CachedItems.ResetCache();
+                }
+
                 _hasPendingChanges = false;
                 _isDeadlocked = false;
                 _lock.Dispose();
@@ -508,7 +513,7 @@ namespace Sels.FileDatabaseEngine.Table
             }
             else
             {
-                throw new ObjectNotFoundException(item, Identifier);
+                throw new TableObjectNotFoundException(item, Identifier);
             }
         }
 
@@ -523,7 +528,7 @@ namespace Sels.FileDatabaseEngine.Table
             }
             else
             {
-                throw new ObjectNotFoundException(item, Identifier);
+                throw new TableObjectNotFoundException(item, Identifier);
             }
         }
 
