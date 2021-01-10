@@ -39,7 +39,7 @@ namespace Sels.FileDatabaseEngine.Page
         {
             _logger.LogMessage(LogLevel.Information, $"Initializing DataPageSource<{typeof(T)}>({SerializationProvider})");
 
-            _baseDirectory.ValidateVariable(nameof(source));
+            source.ValidateVariable(nameof(source));
             _baseDirectory = source;
 
             _dataFile = new FileInfo(Path.Combine(_baseDirectory.FullName, $"Content.{SerializationProvider}"));

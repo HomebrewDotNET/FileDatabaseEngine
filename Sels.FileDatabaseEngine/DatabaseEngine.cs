@@ -143,5 +143,23 @@ namespace Sels.FileDatabaseEngine
                 Engine._databases.ForceExecute(x => x.Shutdown(), (database, ex) => Engine.Logger.LogException(LogLevel.Warning, () => $"Error occured while starting Database({database.Identifier})", ex));
             }
         }
+
+        public static void StartAll()
+        {
+            Engine.Logger.LogMessage(LogLevel.Information, () => $"FileDatabaseEngine attempting to start {Engine._databases.Count()} Databases");
+            if (Engine._databases.HasValue())
+            {
+                Engine._databases.Execute(x => x.Startup(), (database, ex) => Engine.Logger.LogException(LogLevel.Warning, () => $"Error occured while starting Database({database.Identifier})", ex));
+            }
+        }
+
+        public static void ShutdownAll()
+        {
+            Engine.Logger.LogMessage(LogLevel.Information, () => $"FileDatabaseEngine attempting to shutdown {Engine._databases.Count()} Databases");
+            if (Engine._databases.HasValue())
+            {
+                Engine._databases.Execute(x => x.Shutdown(), (database, ex) => Engine.Logger.LogException(LogLevel.Warning, () => $"Error occured while starting Database({database.Identifier})", ex));
+            }
+        }
     }
 }

@@ -80,6 +80,8 @@ namespace Sels.FileDatabaseEngine.Table
             ValidateLock(tableLock);
             query.ValidateVariable(nameof(query));
 
+            var results = new List<T>();
+
             using (_logger.CreateTimedLogger(LogLevel.Debug, $"Querying items from DatabaseTable({Identifier})<{typeof(T)}>", x => $"Queried items from DatabaseTable({Identifier})<{typeof(T)}> in {x.TotalMilliseconds}ms"))
             {
                 lock (_threadLock)
@@ -91,10 +93,12 @@ namespace Sels.FileDatabaseEngine.Table
                     {
                         if (query(item))
                         {
-                            yield return _dataSource.Clone(item);
+                            results.Add(_dataSource.Clone(item));
                         }
                     }
                 }
+
+                return results;
             }
             
         }
