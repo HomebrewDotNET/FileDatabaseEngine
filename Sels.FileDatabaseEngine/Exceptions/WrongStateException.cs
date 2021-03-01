@@ -1,5 +1,5 @@
 ﻿using Sels.Core.Extensions;
-using Sels.Core.Extensions.Object.String;
+using Sels.Core.Extensions;
 using Sels.FileDatabaseEngine.Enums;
 using System;
 using System.Collections.Generic;

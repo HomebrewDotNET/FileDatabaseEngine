@@ -1,12 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
+using Sels.Core;
 using Sels.Core.Components.Caching;
 using Sels.Core.Extensions;
-using Sels.Core.Extensions.Execution;
-using Sels.Core.Extensions.Execution.Linq;
-using Sels.Core.Extensions.General.Generic;
-using Sels.Core.Extensions.General.Validation;
-using Sels.Core.Extensions.Io.FileSystem;
+using Sels.Core.Extensions.Io;
 using Sels.Core.Extensions.Logging;
 using Sels.FileDatabaseEngine.Enums;
 using Sels.FileDatabaseEngine.Exceptions;
@@ -15,6 +12,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Sels.FileDatabaseEngine
 {
@@ -54,6 +52,8 @@ namespace Sels.FileDatabaseEngine
             _databases = new List<Database>();
             _loggerFactory = new NullLoggerFactory();
             _logger = new ValueCache<ILogger>(() => _loggerFactory.CreateLogger(LogCategory));
+
+            Helper.App.RegisterApplicationClosingAction(ForceShutdownAll);
         }
 
         private void AddLogging(ILoggerFactory loggerFactory)
