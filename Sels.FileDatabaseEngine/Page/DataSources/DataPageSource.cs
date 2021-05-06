@@ -4,7 +4,7 @@ using Sels.Core.Components.Serialization;
 using Sels.Core.Extensions;
 using Sels.Core.Extensions.Io;
 using Sels.Core.Extensions.Logging;
-using Sels.Core.Extensions.Serialization;
+using Sels.Core.Extensions.Conversion;
 using System;
 using System.Collections.Generic;
 using System.IO;

@@ -4,6 +4,7 @@ using Sels.Core.Components.Locking;
 using Sels.Core.Components.Serialization;
 using Sels.Core.Extensions;
 using Sels.Core.Extensions.Io;
+using Sels.Core.Extensions.Linq;
 using Sels.Core.Extensions.Logging;
 using Sels.FileDatabaseEngine.Enums;
 using Sels.FileDatabaseEngine.Exceptions;
