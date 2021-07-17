@@ -20,6 +20,7 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using static Sels.Core.Delegates;
 
 namespace Sels.FileDatabaseEngine
 {
@@ -213,12 +214,12 @@ namespace Sels.FileDatabaseEngine
             RegisterTable<T>(tableIdentifier, provider, typeActivator, DefaultTableComparator<T>);
         }
 
-        public void RegisterTable<T>(string tableIdentifier, SerializationProvider provider, ITypeActivator<IDatabaseTableSource<T>> typeActivator, Func<T, T, bool> comparator) where T : class, new()
+        public void RegisterTable<T>(string tableIdentifier, SerializationProvider provider, ITypeActivator<IDatabaseTableSource<T>> typeActivator, Comparator<T> comparator) where T : class, new()
         {
             RegisterTable<T>(tableIdentifier, provider, typeActivator, comparator, DefaultTimeout);
         }
 
-        public void RegisterTable<T>(string tableIdentifier, SerializationProvider provider, ITypeActivator<IDatabaseTableSource<T>> typeActivator, Func<T, T, bool> comparator, int? defaultTimeout) where T : class, new()
+        public void RegisterTable<T>(string tableIdentifier, SerializationProvider provider, ITypeActivator<IDatabaseTableSource<T>> typeActivator, Comparator<T> comparator, int? defaultTimeout) where T : class, new()
         {
             CheckValidForSetup();
 

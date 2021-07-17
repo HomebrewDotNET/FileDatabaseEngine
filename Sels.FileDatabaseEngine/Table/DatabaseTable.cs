@@ -20,6 +20,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
+using static Sels.Core.Delegates;
 
 namespace Sels.FileDatabaseEngine.Table
 {
@@ -37,9 +38,9 @@ namespace Sels.FileDatabaseEngine.Table
         private ITypeActivator<IDatabaseTableSource<T>> _typeActivator;
 
         // Settings
-        private readonly Func<T, T, bool> _comparator;
+        private readonly Comparator<T> _comparator;
 
-        internal DatabaseTable(string identifier, IDatabaseTableSource<T> dataSource, ITypeActivator<IDatabaseTableSource<T>> typeActivator, DirectoryInfo sourceDirectory, int timeout, Func<T, T, bool> comparator, ILogger logger) : base(sourceDirectory, identifier, timeout, logger)
+        internal DatabaseTable(string identifier, IDatabaseTableSource<T> dataSource, ITypeActivator<IDatabaseTableSource<T>> typeActivator, DirectoryInfo sourceDirectory, int timeout, Comparator<T> comparator, ILogger logger) : base(sourceDirectory, identifier, timeout, logger)
         {
             comparator.ValidateVariable(nameof(comparator));
             dataSource.ValidateVariable(nameof(dataSource));
