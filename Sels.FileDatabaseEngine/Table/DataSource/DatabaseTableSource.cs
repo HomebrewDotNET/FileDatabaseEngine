@@ -4,7 +4,7 @@ using Sels.Core.Components.Caching;
 using Sels.Core.Components.Locking;
 using Sels.Core.Components.Serialization;
 using Sels.Core.Extensions;
-using Sels.Core.Extensions.Io;
+
 using Sels.Core.Extensions.Logging;
 using Sels.Core.Extensions.Conversion;
 using Sels.FileDatabaseEngine.Exceptions;
