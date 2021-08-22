@@ -9,6 +9,7 @@ using System.Linq;
 using Sels.Core.Extensions.Linq;
 using System.Threading;
 using Sels.Core.Components.Serialization;
+using Sels.Core.Components.Serialization.Providers;
 
 namespace Sels.FileDatabaseEngine.TestTool
 {

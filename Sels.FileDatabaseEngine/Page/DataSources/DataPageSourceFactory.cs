@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using Sels.Core.Components.Serialization;
+using Sels.Core.Components.Serialization.Providers;
 using Sels.FileDatabaseEngine.Page.DataSources.Sources;
 using System;
 using System.Collections.Generic;

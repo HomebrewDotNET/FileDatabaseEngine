@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Sels.Core.Components.Serialization.Providers;
 
 namespace Sels.FileDatabaseEngine.Page
 {

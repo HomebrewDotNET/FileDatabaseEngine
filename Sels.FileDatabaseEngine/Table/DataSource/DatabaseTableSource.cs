@@ -17,6 +17,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using Sels.Core.Components.Serialization.Providers;
 
 namespace Sels.FileDatabaseEngine.Table
 {

@@ -2,6 +2,7 @@
 using Sels.Core.Components.Caching;
 using Sels.Core.Components.Locking;
 using Sels.Core.Components.Serialization;
+using Sels.Core.Components.Serialization.Providers;
 using Sels.Core.Extensions;
 
 using Sels.Core.Extensions.Linq;

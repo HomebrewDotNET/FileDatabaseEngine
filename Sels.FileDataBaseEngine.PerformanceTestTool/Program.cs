@@ -1,6 +1,7 @@
 ﻿using Sels.Core.Components.Console;
 using Sels.Core.Components.Performance;
 using Sels.Core.Components.Serialization;
+using Sels.Core.Components.Serialization.Providers;
 using Sels.FileDatabaseEngine;
 using Sels.FileDatabaseEngine.Connection;
 using Sels.FileDatabaseEngine.Enums;
