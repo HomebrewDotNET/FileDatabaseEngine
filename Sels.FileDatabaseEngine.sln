@@ -3,22 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29911.84
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{926C6237-CBC2-471C-A1F4-A106F96B1ABE}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sels.FileDatabaseEngine", "Sels.FileDatabaseEngine\Sels.FileDatabaseEngine.csproj", "{734B56E3-AC22-473A-B10C-2F287974F17E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sels.FileDatabaseEngine.PerformanceTestTool", "Sels.FileDataBaseEngine.PerformanceTestTool\Sels.FileDatabaseEngine.PerformanceTestTool.csproj", "{C3B4164C-2F66-4BFF-98CE-111A540273CA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sels.FileDatabaseEngine.TestTool", "Sels.FileDatabaseEngine.TestTool\Sels.FileDatabaseEngine.TestTool.csproj", "{BB325FF0-FD6D-47B5-88C9-D9D042E6E176}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sels.Core", "..\Sels.Core\Sels.Core\Sels.Core.csproj", "{2A3712AE-8060-4AEF-9554-995BA5D6BB2F}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D27B7A57-173F-490E-84DB-E4D50E8D8AFA}"
 	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		LICENSE.md = LICENSE.md
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sels.FileDatabaseEngine.V2", "V2\Sels.FileDatabaseEngine.V2\Sels.FileDatabaseEngine.V2.csproj", "{F41DA259-0A76-4E43-95F8-615E1707536E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sels.FileDatabaseEngine.V2", "V2\Sels.FileDatabaseEngine.V2\Sels.FileDatabaseEngine.V2.csproj", "{F41DA259-0A76-4E43-95F8-615E1707536E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,10 +37,6 @@ Global
 		{BB325FF0-FD6D-47B5-88C9-D9D042E6E176}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB325FF0-FD6D-47B5-88C9-D9D042E6E176}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB325FF0-FD6D-47B5-88C9-D9D042E6E176}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2A3712AE-8060-4AEF-9554-995BA5D6BB2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2A3712AE-8060-4AEF-9554-995BA5D6BB2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2A3712AE-8060-4AEF-9554-995BA5D6BB2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2A3712AE-8060-4AEF-9554-995BA5D6BB2F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F41DA259-0A76-4E43-95F8-615E1707536E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F41DA259-0A76-4E43-95F8-615E1707536E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F41DA259-0A76-4E43-95F8-615E1707536E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -49,9 +44,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{2A3712AE-8060-4AEF-9554-995BA5D6BB2F} = {926C6237-CBC2-471C-A1F4-A106F96B1ABE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BA96CAA2-635E-45CA-86A3-90611D36C387}

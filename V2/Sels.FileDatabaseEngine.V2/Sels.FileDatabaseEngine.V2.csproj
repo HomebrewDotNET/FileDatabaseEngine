@@ -6,10 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Sels.Core\Sels.Core\Sels.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Components\Cluster\Manager\" />
     <Folder Include="Components\Filter\Cluster\File\" />
   </ItemGroup>

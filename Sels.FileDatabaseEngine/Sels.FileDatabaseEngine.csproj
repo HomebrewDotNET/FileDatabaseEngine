@@ -2,14 +2,47 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Jens Sels</Authors>
+    <Company>Homebrew IT</Company>
+    <Product>File Database Engine</Product>
+    <Description>Prototype file based database aiming to provide easy setup/syntax to persist objects. Mainly aimed at small tools.</Description>
+    <Copyright>Jens Sels</Copyright>
+    <PackageProjectUrl>https://github.com/Jenssels1998/FileDatabaseEngine</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Jenssels1998/FileDatabaseEngine</RepositoryUrl>
+    <PackageTags>Sels</PackageTags>
+	  <!--For NuGet package-->
+	  <VersionPrefix>1.0.1</VersionPrefix>
+	  <BuildNumber Condition="'$(BUILD_NUMBER)' == ''">0</BuildNumber>
+	  <BuildNumber Condition="'$(BUILD_NUMBER)' != ''">$(BUILD_NUMBER)</BuildNumber>
+	  <VersionSuffix Condition="'$(Configuration)' == 'Debug'">beta-$(BuildNumber)</VersionSuffix>
+	  <DocumentationFile>$(OutDir)$(MSBuildProjectName).xml</DocumentationFile>
+	  <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
   </PropertyGroup>
+
+	<!--Exclude pdb files from release build-->
+	<PropertyGroup Condition="'$(Configuration)' == 'Release'">
+		<DebugType>None</DebugType>
+		<DebugSymbols>false</DebugSymbols>
+	</PropertyGroup>
+
+	<!--Include non-NuGet package projects in NuGet package-->
+	<Target Name="PrePackage" BeforeTargets="BuildPackage">
+		<PropertyGroup>
+			<BuildCommand>$(BuildCommand) -IncludeReferencedProjects</BuildCommand>
+		</PropertyGroup>
+	</Target>
+
+	<!--Clear local versions if already added and add NuGet package to local repository-->
+	<Target Name="NuGetPushToLocal" AfterTargets="Pack" Condition="'$(OS)' == 'Windows_NT' And Exists('C:\NuGet\nuget.exe')">
+		<RemoveDir Directories="%USERPROFILE%\.nuget\packages\$(PackageId)\$(PackageVersion)" />
+		<RemoveDir Directories="C:\NuGet\$(PackageId)\$(PackageVersion)" />
+		<Exec Command="C:\NuGet\nuget.exe add $(ProjectDir)bin\$(Configuration)\$(PackageId).$(PackageVersion).nupkg -Source C:\NuGet -Verbosity Detailed" />
+	</Target>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.8" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\Sels.Core\Sels.Core\Sels.Core.csproj" />
+    <PackageReference Include="Sels.Core" Version="1.*" />
   </ItemGroup>
 
 </Project>

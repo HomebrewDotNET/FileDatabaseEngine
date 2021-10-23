@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Sels.Core\Sels.Core\Sels.Core.csproj" />
     <ProjectReference Include="..\Sels.FileDatabaseEngine\Sels.FileDatabaseEngine.csproj" />
   </ItemGroup>
 
