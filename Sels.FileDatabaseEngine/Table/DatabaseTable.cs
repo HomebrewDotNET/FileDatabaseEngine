@@ -4,7 +4,7 @@ using Sels.Core.Components.Locking;
 using Sels.Core.Components.Serialization;
 using Sels.Core.Components.Serialization.Providers;
 using Sels.Core.Extensions;
-
+using Sels.Core.Extensions.Execution;
 using Sels.Core.Extensions.Linq;
 using Sels.Core.Extensions.Logging;
 using Sels.FileDatabaseEngine.Enums;
@@ -304,7 +304,7 @@ namespace Sels.FileDatabaseEngine.Table
 
             var content = File.ReadAllText(fileName).Split('|');
 
-            return (content[0], Type.GetType(content[1]), Type.GetType(content[2]), content[3], DateTime.Parse(content[4]));
+            return (content[0], Type.GetType(content[1], true), Type.GetType(content[2], true), content[3], DateTime.Parse(content[4]));
         }
         #endregion
 
